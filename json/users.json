@@ -1,0 +1,34 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Saska Kamishka",
+            "date": "21-10-2023",
+            "email": "kamyninsasa@gmail.com",
+            "photo": null,
+            "role": "user",
+            "status": "active",
+            "friends": null
+        },
+        {
+            "id": 2,
+            "name": "Danilka Solomin",
+            "date": "01-10-1995",
+            "email": "yadanilka@danilka.com",
+            "photo": null,
+            "role": "user",
+            "status": "active",
+            "friends": null
+        },
+        {
+            "id": 3,
+            "name": "Kostya ne Spisivai Webchik",
+            "date": "11-10-2023",
+            "email": "siderblablabla@gmail.com",
+            "photo": null,
+            "role": "user",
+            "status": "active",
+            "friends": null
+        }
+    ]
+}
