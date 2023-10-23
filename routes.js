@@ -7,12 +7,12 @@ const AdminTools = require("./src/scripts/admin.js")
 const admin_tools = new AdminTools();
 
 // home page
-router.get('/', (request, response, next) => {
+router.get('/', (request, response) => {
     response.render('admin_panel');
 })
 
 
-router.post("/get_users", (request, response, next) => {
+router.post("/get_users", (request, response) => {
     let users_table = admin_tools.get_users();
     response.send(
         JSON.stringify({
@@ -20,6 +20,11 @@ router.post("/get_users", (request, response, next) => {
         })
     );
 })
+
+
+router.get("/users/:user_id([0-9]{1,})", (request, response) => {
+    response.render("user");
+});
 
 
 router.get("*", (request, response)=>{

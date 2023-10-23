@@ -7,6 +7,7 @@ $(document).ready(async() => {
     
     for(user_num in users)
     {
-        $(".users_list").append(`<li>${users[user_num].id}. ${users[user_num].name}</li>`);
+        const user = users[user_num];
+        $(".users_list").append(`<li><a href='/users/${user.id}'>${user.id}. ${user.name}, дата-рождения: ${user.date}, email: ${user.email}, role: ${user.role}, status: ${user.status}</a></li>`);
     }
 })
