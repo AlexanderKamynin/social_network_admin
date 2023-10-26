@@ -20,7 +20,7 @@ function send_request(method, URL, data=null)
     )
 }
 
-function back_to_page(URL)
+function go_to_page(URL)
 {
     document.location.href = URL;
 }
@@ -28,16 +28,32 @@ function back_to_page(URL)
 
 async function get_users_table()
 {
-    let result = null;
+    let users_table = null;
     await send_request("post", "/get_users")
     .then(res => res.json())
     .then(res => {
-        result = res["users_table"];
+        users_table = res["users_table"];
     })
     
-    return result;
+    return users_table;
 }
 
+async function get_selected_user()
+{
+    let selected_user = null;
+    await send_request("post", "/get_selected_user")
+    .then(res => res.json())
+    .then(res => {
+        selected_user = res["user_id"];
+    })
+
+    return selected_user;
+}
+
+async function get_user_friend()
+{
+    
+}
 
 async function change_user_info(data)
 {

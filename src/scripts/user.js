@@ -2,8 +2,8 @@ let current_user = null;
 
 
 $(document).ready(async() => {
-    const current_user_id = document.URL.split("/").slice(-1)[0]; // получаем id юзера из URL!!!
-    users = await get_users_table("post", "/get_users");
+    const current_user_id = await get_selected_user();
+    users = await get_users_table();
     current_user = users[users.map((user) => {
         return parseInt(user.id);
     }).indexOf(parseInt(current_user_id))];
@@ -15,11 +15,16 @@ $(document).ready(async() => {
     <p>Дата рождения: ${current_user.date}</p>
     <p>email: ${current_user.email}</p>
     `);
+
+    document.querySelector(".friends").addEventListener('click', function(event) {
+        go_to_page(`/users/${current_user.id}/friend`);
+    });
 })
+
 
 async function save_changes() 
 {
-    const current_user_id = document.URL.split("/").slice(-1)[0]; // получаем id юзера из URL!!!
+    const current_user_id = current_user.id;
     const name = document.querySelector(".name").value;
     const date = document.querySelector(".date").value;
     const email = document.querySelector(".email").value;
