@@ -16,8 +16,16 @@ $(document).ready(async() => {
     <p>email: ${current_user.email}</p>
     `);
 
+    document.querySelector(".save").addEventListener('click', function(event) {
+        save_changes();
+    });
+
     document.querySelector(".friends").addEventListener('click', function(event) {
-        go_to_page(`/users/${current_user.id}/friend`);
+        go_to_page(`/users/${current_user.id}/friends`);
+    });
+
+    document.querySelector(".back").addEventListener('click', function(event) {
+        go_to_page('/');
     });
 })
 

@@ -1,5 +1,3 @@
-
-
 function send_request(method, URL, data=null)
 {
     if (data)
@@ -48,11 +46,6 @@ async function get_selected_user()
     })
 
     return selected_user;
-}
-
-async function get_user_friend()
-{
-    
 }
 
 async function change_user_info(data)

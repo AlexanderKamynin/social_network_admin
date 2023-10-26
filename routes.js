@@ -14,6 +14,7 @@ router.get('/', (request, response) => {
 })
 
 router.get('/admin_panel', (request, response) => {
+    admin_tools.set_selected_user(0);
     response.render('admin_panel');
 });
 

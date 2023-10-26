@@ -8,7 +8,7 @@
             "photo": null,
             "role": "user",
             "status": "active",
-            "friends": null
+            "friends": [2, 3]
         },
         {
             "id": 2,

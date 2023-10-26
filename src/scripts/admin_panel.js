@@ -1,7 +1,7 @@
 let users = null;
 
 $(document).ready(async() => {
-    users = await get_users_table("post", "/get_users");
+    users = await get_users_table();
 
     $(".users_table").append("<ul class='users_list'></ul>")
     
