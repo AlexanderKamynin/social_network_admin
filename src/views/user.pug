@@ -15,16 +15,12 @@ div.main
         input.email(type="email")
 
         select.role
-            option(value="all")
-                ="Вывести все"
-            option(value="admin")
-                ="Администратор"
             option(value="user")
                 ="Пользователь"
+            option(value="admin")
+                ="Администратор"
 
         select.status
-            option(value="all")
-                ="Вывести все"
             option(value="unconfirmed")
                 ="Неподтвержденный"
             option(value="active")
@@ -32,15 +28,15 @@ div.main
             option(value="blocked")
                 ="Заблокированный"
 
-    button.save()
+    button.save(onclick="save_changes()")
         ="Сохранить изменения"
 
-    button.friends()
+    button.friends(onclick="open_friends()")
         ="Друзья"
 
     button.news()
         ="Новости"
 
-    button.back()
+    button.back(onclick="back_to_page('/')")
         ="Вернуться назад"
         
