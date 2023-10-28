@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const fs = require("fs");
 
-const AdminTools = require("./src/scripts/admin.js")
+const AdminTools = require("./build/js/server/admin.js")
 const admin_tools = new AdminTools();
 let users_table = admin_tools.get_users();
 
@@ -15,7 +14,7 @@ router.get('/', (request, response) => {
 
 router.get('/admin_panel', (request, response) => {
     admin_tools.set_selected_user(0);
-    response.render('admin_panel');
+    response.sendFile(path.join(__dirname, "./build/html/admin_panel.html"));
 });
 
 router.post("/get_users", (request, response) => {
@@ -49,16 +48,16 @@ router.post("/change_user_info", (request, response) => {
 })
 
 router.get("/users/:user_id([0-9]{1,})/friends", (request, response) => {
-    response.render("friends");
+    response.sendFile(path.join(__dirname, "./build/html/friends.html"));
 });
 
 router.get("/users/:user_id([0-9]{1,})/news", (request, response) => {
-    response.render("news");
+    response.sendFile(path.join(__dirname, "./build/html/news.html"));
 })
 
 router.get("/users/:user_id([0-9]{1,})", (request, response) => {
     admin_tools.set_selected_user(request.params.user_id);
-    response.render("user");
+    response.sendFile(path.join(__dirname, "./build/html/user.html"));
 });
 
 

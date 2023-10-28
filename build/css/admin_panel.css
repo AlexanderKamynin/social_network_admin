@@ -1,5 +1,1 @@
-body {
-  font-size: 14px;
-  position: absolute;
-  height: 100vh;
-}
+*{font-family:Ubuntu,sans-serif}body{font-size:14px;position:absolute;height:100vh}li{cursor:pointer}
