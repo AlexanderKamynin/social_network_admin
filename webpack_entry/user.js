@@ -1,4 +1,4 @@
 require("../src/styles/user.less");
-require("../src/scripts/jquery.js");
-require("../src/scripts/client/request.js");
-require("../src/scripts/client/user.js");
+require("../js_webpack/jquery.js");
+require("../js_webpack/request.js");
+require("../js_webpack/user.js");

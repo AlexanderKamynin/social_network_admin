@@ -1,4 +1,4 @@
 require("../src/styles/admin_panel.less");
-require("../src/scripts/jquery.js");
-require("../src/scripts/client/request.js");
-require("../src/scripts/client/admin_panel.js");
+require("../js_webpack/jquery.js");
+require("../js_webpack/request.js");
+require("../js_webpack/admin_panel.js");

@@ -4,7 +4,6 @@ const path = require("path");
 const fs = require("fs");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const pages = fs.readdirSync("./src/views").filter(name => name.endsWith(".pug"));
 
@@ -36,13 +35,13 @@ module.exports = {
                 }
             },
             {
-                test: /\/src\/styles\/*.less$/,
+                test: /\.less$/,
+                exclude: /node_modules/,
                 use: [
-                    "style-loader",
+                    'style-loader',
                     'css-loader',
                     'less-loader'
-                ],
-                exclude: /node_modules/
+                ]
             },
             {
                 test: /\/src\/views\/*.pug$/,
@@ -55,8 +54,8 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery'
+            $: './jquery',
+            jQuery: './jquery'
         }),
         ...pages.map(file => new HtmlWebpackPlugin({
             scriptLoading: "blocking",
@@ -65,6 +64,5 @@ module.exports = {
             filename: `./html/${file.replace(/\.pug/, '.html')}`,
             chunks: [file.replace(/\.pug/, "")]
         })),
-
-    ]
+    ],
 };

@@ -1,4 +1,4 @@
 require("../src/styles/friends.less");
-require("../src/scripts/jquery.js");
-require("../src/scripts/client/request.js");
-require("../src/scripts/client/friends.js");
+require("../js_webpack/jquery.js");
+require("../js_webpack/request.js");
+require("../js_webpack/friends.js");
