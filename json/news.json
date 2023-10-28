@@ -1,0 +1,23 @@
+{
+    "news": [
+        {
+            "id": 1,
+            "posts": [
+                "Ya golovaaa!",
+                "Ya pokekal hah-hah-hah"
+            ]
+        },
+        {
+            "id": 3,
+            "posts": [
+                "Ti loh"
+            ]
+        },
+        {
+            "id": 2,
+            "posts": [
+                "hochu pitsy"
+            ]
+        }
+    ]
+}

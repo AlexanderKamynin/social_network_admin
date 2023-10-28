@@ -20,6 +20,10 @@ $(document).ready(async() => {
         save_changes();
     });
 
+    document.querySelector(".news").addEventListener('click', function(event) {
+        go_to_page(`/users/${current_user.id}/news`);
+    })
+
     document.querySelector(".friends").addEventListener('click', function(event) {
         go_to_page(`/users/${current_user.id}/friends`);
     });

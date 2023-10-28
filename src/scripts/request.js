@@ -48,9 +48,25 @@ async function get_selected_user()
     return selected_user;
 }
 
-async function change_user_info(data)
+async function get_user_news(id)
 {
-    await send_request("post", "/change_user_info", data);
+    let user_news = null;
+    let data = {
+        user_id: id
+    };
+
+    await send_request("post", "/get_user_news", data)
+    .then(res => res.json())
+    .then(res => {
+        user_news = res["news"];
+    });
+
+    return user_news;
+}
+
+async function change_user_info(user_info)
+{
+    await send_request("post", "/change_user_info", user_info);
 
     location.reload();
 }

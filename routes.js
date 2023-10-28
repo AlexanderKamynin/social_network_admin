@@ -34,6 +34,14 @@ router.post("/get_selected_user", (request, response) => {
     )
 })
 
+router.post("/get_user_news", (request, response) => {
+    response.send(
+        JSON.stringify({
+            "news": admin_tools.get_user_news(request.body.user_id)
+        })
+    )
+})
+
 router.post("/change_user_info", (request, response) => {
     admin_tools.change_user_info(request.body.id, request.body);
     users_table = admin_tools.get_users();
@@ -43,6 +51,10 @@ router.post("/change_user_info", (request, response) => {
 router.get("/users/:user_id([0-9]{1,})/friends", (request, response) => {
     response.render("friends");
 });
+
+router.get("/users/:user_id([0-9]{1,})/news", (request, response) => {
+    response.render("news");
+})
 
 router.get("/users/:user_id([0-9]{1,})", (request, response) => {
     admin_tools.set_selected_user(request.params.user_id);
