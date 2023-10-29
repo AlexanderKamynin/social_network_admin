@@ -11,20 +11,31 @@ $(document).ready(async() => {
     const friends = current_user.friends;
 
     if(friends)
-    {
-        $(".friends_table").append("<ul class='friends_list'></ul>")
-        
+    {   
         for(let idx = 0; idx < friends.length; idx++)
         {
             const friend = users[users.map((user) => {
                 return parseInt(user.id);
             }).indexOf(parseInt(friends[idx]))];
-            $(".friends_list").append(`<li>${friend.id}. ${friend.name}, дата-рождения: ${friend.date}, email: ${friend.email}, role: ${friend.role}, status: ${friend.status}</li>`);
+
+            let friend_info = `
+            <img src='/src/img/${friend.avatar}'>
+            <div class="description">
+            <p>ID: ${friend.id}</p>
+            <p>Имя: ${friend.name}</p>
+            <p>Дата рождения: ${friend.date}</p>
+            <p>email: ${friend.email}</p>
+            <p>Роль: ${friend.role}</p>
+            <p>Статус: ${friend.status}<p>
+            </div>
+            `;
+
+            $(".friends_table").append(`<div class="friend_info">${friend_info}</div>`);
         }
     }
     else
     {
-        $(".friends_table").append("<p>У пользователя нет друзей =(</p>");
+        $(".friends_table").append(`<div class='no_friend'>У пользователя нет друзей =(</div>`);
     }
 
     document.querySelector(".back").addEventListener('click', function(event) {

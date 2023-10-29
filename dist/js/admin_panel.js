@@ -19,7 +19,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var users = null;
 $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-  var user_num, user;
+  var user_num, user, user_info;
   return _regeneratorRuntime().wrap(function _callee$(_context) {
     while (1) switch (_context.prev = _context.next) {
       case 0:
@@ -27,12 +27,12 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
         return (0,_request__WEBPACK_IMPORTED_MODULE_0__.get_users_table)();
       case 2:
         users = _context.sent;
-        $(".users_table").append("<ul class='users_list'></ul>");
         for (user_num in users) {
           user = users[user_num];
-          $(".users_list").append("<li><a href='/users/".concat(user.id, "'>").concat(user.id, ". ").concat(user.name, ", \u0434\u0430\u0442\u0430-\u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(user.date, ", email: ").concat(user.email, ", role: ").concat(user.role, ", status: ").concat(user.status, "</a></li>"));
+          user_info = "\n            <img src='/src/img/".concat(user.avatar, "'>\n            <div class=\"description\">\n            <p>ID: ").concat(user.id, "</p>\n            <p>\u0418\u043C\u044F: ").concat(user.name, "</p>\n            <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(user.date, "</p>\n            <p>email: ").concat(user.email, "</p>\n            <p>\u0420\u043E\u043B\u044C: ").concat(user.role, "</p>\n            <p>\u0421\u0442\u0430\u0442\u0443\u0441: ").concat(user.status, "<p>\n\n            <a href='/users/").concat(user.id, "'>\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</a>\n            </div>\n        ");
+          $(".users_table").append("<div class=\"user_info\">".concat(user_info, "</div>"));
         }
-      case 5:
+      case 4:
       case "end":
         return _context.stop();
     }
@@ -3489,12 +3489,50 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
   font-family: 'Ubuntu', sans-serif;
 }
 body {
-  font-size: 14px;
+  font-size: 16px;
   position: absolute;
   height: 100vh;
+  width: 100%;
 }
-li {
-  cursor: pointer;
+.header {
+  font-size: 24px;
+  position: initial;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 12px;
+  left: 20%;
+}
+.users_table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+}
+.user_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+img {
+  height: 124px;
+  width: 124px;
+  margin-right: 20px;
+}
+div p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+a:link,
+a:visited {
+  color: #8f9ef4;
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  text-decoration: underline;
 }
 `, ""]);
 // Exports

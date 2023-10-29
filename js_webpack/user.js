@@ -16,6 +16,8 @@ $(document).ready(async() => {
     <p>Имя: ${current_user.name}</p>
     <p>Дата рождения: ${current_user.date}</p>
     <p>email: ${current_user.email}</p>
+    <p>Роль: ${current_user.role}</p>
+    <p>Статус: ${current_user.status}</p>
     `);
 
     document.querySelector(".save").addEventListener('click', function(event) {

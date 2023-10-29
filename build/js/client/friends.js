@@ -6,7 +6,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var selected_user_id = null;
 $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-  var users, current_user, friends, idx, friend;
+  var users, current_user, friends, idx, friend, friend_info;
   return _regeneratorRuntime().wrap(function _callee$(_context) {
     while (1) switch (_context.prev = _context.next) {
       case 0:
@@ -23,15 +23,15 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
         }).indexOf(parseInt(selected_user_id))];
         friends = current_user.friends;
         if (friends) {
-          $(".friends_table").append("<ul class='friends_list'></ul>");
           for (idx = 0; idx < friends.length; idx++) {
             friend = users[users.map(function (user) {
               return parseInt(user.id);
             }).indexOf(parseInt(friends[idx]))];
-            $(".friends_list").append("<li>".concat(friend.id, ". ").concat(friend.name, ", \u0434\u0430\u0442\u0430-\u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(friend.date, ", email: ").concat(friend.email, ", role: ").concat(friend.role, ", status: ").concat(friend.status, "</li>"));
+            friend_info = "\n            <img src='/src/img/".concat(friend.avatar, "'>\n            <div class=\"description\">\n            <p>ID: ").concat(friend.id, "</p>\n            <p>\u0418\u043C\u044F: ").concat(friend.name, "</p>\n            <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(friend.date, "</p>\n            <p>email: ").concat(friend.email, "</p>\n            <p>\u0420\u043E\u043B\u044C: ").concat(friend.role, "</p>\n            <p>\u0421\u0442\u0430\u0442\u0443\u0441: ").concat(friend.status, "<p>\n            </div>\n            ");
+            $(".friends_table").append("<div class=\"friend_info\">".concat(friend_info, "</div>"));
           }
         } else {
-          $(".friends_table").append("<p>У пользователя нет друзей =(</p>");
+          $(".friends_table").append("<div class='no_friend'>\u0423 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043D\u0435\u0442 \u0434\u0440\u0443\u0437\u0435\u0439 =(</div>");
         }
         document.querySelector(".back").addEventListener('click', function (event) {
           go_to_page("/users/".concat(selected_user_id));

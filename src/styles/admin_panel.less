@@ -1,4 +1,7 @@
-@font_size: 14px;
+@font_size: 16px;
+@padding_left: 2rem;
+@user_info_margin: 5px;
+@image_size: 124px;
 
 * {
     font-family: 'Ubuntu', sans-serif;
@@ -8,8 +11,52 @@ body {
     font-size: @font_size;
     position: absolute;
     height: 100vh;
+    width: 100%;
 }
 
-li {
-    cursor: pointer;
+.header {
+    font-size: 24px;
+    position: initial;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+    left: 20%;
+}
+
+.users_table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.user_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+img {
+    height: @image_size;
+    width: @image_size;
+    margin-right: 20px;
+}
+
+div p {
+    margin-top: @user_info_margin;
+    margin-bottom: @user_info_margin;
+}
+
+a:link,
+a:visited {
+    color: #8f9ef4;
+    text-decoration: none;
+}
+
+a:hover,
+a:active{
+    text-decoration: underline;
 }

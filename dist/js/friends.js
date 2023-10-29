@@ -19,7 +19,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var selected_user_id = null;
 $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-  var users, current_user, friends, idx, friend;
+  var users, current_user, friends, idx, friend, friend_info;
   return _regeneratorRuntime().wrap(function _callee$(_context) {
     while (1) switch (_context.prev = _context.next) {
       case 0:
@@ -36,15 +36,15 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
         }).indexOf(parseInt(selected_user_id))];
         friends = current_user.friends;
         if (friends) {
-          $(".friends_table").append("<ul class='friends_list'></ul>");
           for (idx = 0; idx < friends.length; idx++) {
             friend = users[users.map(function (user) {
               return parseInt(user.id);
             }).indexOf(parseInt(friends[idx]))];
-            $(".friends_list").append("<li>".concat(friend.id, ". ").concat(friend.name, ", \u0434\u0430\u0442\u0430-\u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(friend.date, ", email: ").concat(friend.email, ", role: ").concat(friend.role, ", status: ").concat(friend.status, "</li>"));
+            friend_info = "\n            <img src='/src/img/".concat(friend.avatar, "'>\n            <div class=\"description\">\n            <p>ID: ").concat(friend.id, "</p>\n            <p>\u0418\u043C\u044F: ").concat(friend.name, "</p>\n            <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(friend.date, "</p>\n            <p>email: ").concat(friend.email, "</p>\n            <p>\u0420\u043E\u043B\u044C: ").concat(friend.role, "</p>\n            <p>\u0421\u0442\u0430\u0442\u0443\u0441: ").concat(friend.status, "<p>\n            </div>\n            ");
+            $(".friends_table").append("<div class=\"friend_info\">".concat(friend_info, "</div>"));
           }
         } else {
-          $(".friends_table").append("<p>У пользователя нет друзей =(</p>");
+          $(".friends_table").append("<div class='no_friend'>\u0423 \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044F \u043D\u0435\u0442 \u0434\u0440\u0443\u0437\u0435\u0439 =(</div>");
         }
         document.querySelector(".back").addEventListener('click', function (event) {
           go_to_page("/users/".concat(selected_user_id));
@@ -3504,6 +3504,68 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `* {
   font-family: 'Ubuntu', sans-serif;
+}
+body {
+  font-size: 16px;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+}
+.header {
+  font-size: 24px;
+  position: initial;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 12px;
+  left: 20%;
+}
+.friends_table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+}
+.no_friend {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+.user_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+img {
+  height: 124px;
+  width: 124px;
+  margin-right: 20px;
+}
+div p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+button {
+  margin: 15px;
+}
+button {
+  background-color: #1473adcd;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+button:hover {
+  background-color: #0f476acd;
 }
 `, ""]);
 // Exports

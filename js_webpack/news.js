@@ -6,6 +6,7 @@ let selected_user_id = null;
 $(document).ready(async() => {
     selected_user_id = await get_selected_user();
     let news = await get_user_news(selected_user_id);
+    let posts_number = 1;
 
     if (news)
     {
@@ -13,17 +14,25 @@ $(document).ready(async() => {
         {
             const friend_news = news[idx];
 
-            $(".news").append(`<div id=${friend_news.id}></div>`);
-            $(".news").children(`#${friend_news.id}`).append(`<p>ID: ${friend_news.id}</p>`);
+            let description = `
+            <div class="description">
+            <img src='/src/img/${friend_news.avatar}'>
+            <p>${friend_news.name}</p>
+            </div>
+            `
+
+            $(".news").append(`<div class="friend_news" id="${posts_number}">${description}</div>`);
             for(let post_idx = 0; post_idx < friend_news.posts.length; post_idx++)
             {
-                $(".news").children(`#${friend_news.id}`).append(`<p>${friend_news.posts[post_idx]}</p>`);
+                $(".news").children(`#${posts_number}`).append(`<p>${friend_news.posts[post_idx]}</p>`);
             }
+
+            posts_number++;
         }
     }
     else
     {
-        $(".news").append("<p>Нет новостей</p>");
+        $(".news").append(`<div class='no_news'>Нет новостей</div>`);
     }
 
     document.querySelector(".back").addEventListener('click', function(event) {

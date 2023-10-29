@@ -3458,7 +3458,7 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
         current_user = users[users.map(function (user) {
           return parseInt(user.id);
         }).indexOf(parseInt(current_user_id))];
-        $(".user_info").append("\n    <p>ID: ".concat(current_user_id, "</p>\n    <p>\u0418\u043C\u044F: ").concat(current_user.name, "</p>\n    <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(current_user.date, "</p>\n    <p>email: ").concat(current_user.email, "</p>\n    "));
+        $(".user_info").append("\n    <p>ID: ".concat(current_user_id, "</p>\n    <p>\u0418\u043C\u044F: ").concat(current_user.name, "</p>\n    <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(current_user.date, "</p>\n    <p>email: ").concat(current_user.email, "</p>\n    <p>\u0420\u043E\u043B\u044C: ").concat(current_user.role, "</p>\n    <p>\u0421\u0442\u0430\u0442\u0443\u0441: ").concat(current_user.status, "</p>\n    "));
         document.querySelector(".save").addEventListener('click', function (event) {
           save_changes();
         });
@@ -3535,6 +3535,51 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, `* {
   font-family: 'Ubuntu', sans-serif;
+}
+body {
+  font-size: 16px;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+}
+.user_info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+div p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.user_change_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+button {
+  margin: 15px;
+}
+button {
+  background-color: #1473adcd;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+button:hover {
+  background-color: #0f476acd;
 }
 `, ""]);
 // Exports

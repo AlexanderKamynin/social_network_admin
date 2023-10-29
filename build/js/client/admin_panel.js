@@ -6,7 +6,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var users = null;
 $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-  var user_num, user;
+  var user_num, user, user_info;
   return _regeneratorRuntime().wrap(function _callee$(_context) {
     while (1) switch (_context.prev = _context.next) {
       case 0:
@@ -14,12 +14,12 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
         return get_users_table();
       case 2:
         users = _context.sent;
-        $(".users_table").append("<ul class='users_list'></ul>");
         for (user_num in users) {
           user = users[user_num];
-          $(".users_list").append("<li><a href='/users/".concat(user.id, "'>").concat(user.id, ". ").concat(user.name, ", \u0434\u0430\u0442\u0430-\u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(user.date, ", email: ").concat(user.email, ", role: ").concat(user.role, ", status: ").concat(user.status, "</a></li>"));
+          user_info = "\n            <img src='/src/img/".concat(user.avatar, "'>\n            <div class=\"description\">\n            <p>ID: ").concat(user.id, "</p>\n            <p>\u0418\u043C\u044F: ").concat(user.name, "</p>\n            <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(user.date, "</p>\n            <p>email: ").concat(user.email, "</p>\n            <p>\u0420\u043E\u043B\u044C: ").concat(user.role, "</p>\n            <p>\u0421\u0442\u0430\u0442\u0443\u0441: ").concat(user.status, "<p>\n\n            <a href='/users/").concat(user.id, "'>\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</a>\n            </div>\n        ");
+          $(".users_table").append("<div class=\"user_info\">".concat(user_info, "</div>"));
         }
-      case 5:
+      case 4:
       case "end":
         return _context.stop();
     }

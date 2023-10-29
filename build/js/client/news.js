@@ -6,7 +6,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var selected_user_id = null;
 $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-  var news, idx, friend_news, post_idx;
+  var news, posts_number, idx, friend_news, description, post_idx;
   return _regeneratorRuntime().wrap(function _callee$(_context) {
     while (1) switch (_context.prev = _context.next) {
       case 0:
@@ -18,22 +18,24 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
         return get_user_news(selected_user_id);
       case 5:
         news = _context.sent;
+        posts_number = 1;
         if (news) {
           for (idx = 0; idx < news.length; idx++) {
             friend_news = news[idx];
-            $(".news").append("<div id=".concat(friend_news.id, "></div>"));
-            $(".news").children("#".concat(friend_news.id)).append("<p>ID: ".concat(friend_news.id, "</p>"));
+            description = "\n            <div class=\"description\">\n            <img src='/src/img/".concat(friend_news.avatar, "'>\n            <p>").concat(friend_news.name, "</p>\n            </div>\n            ");
+            $(".news").append("<div class=\"friend_news\" id=\"".concat(posts_number, "\">").concat(description, "</div>"));
             for (post_idx = 0; post_idx < friend_news.posts.length; post_idx++) {
-              $(".news").children("#".concat(friend_news.id)).append("<p>".concat(friend_news.posts[post_idx], "</p>"));
+              $(".news").children("#".concat(posts_number)).append("<p>".concat(friend_news.posts[post_idx], "</p>"));
             }
+            posts_number++;
           }
         } else {
-          $(".news").append("<p>Нет новостей</p>");
+          $(".news").append("<div class='no_news'>\u041D\u0435\u0442 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439</div>");
         }
         document.querySelector(".back").addEventListener('click', function (event) {
           go_to_page("/users/".concat(selected_user_id));
         });
-      case 8:
+      case 9:
       case "end":
         return _context.stop();
     }

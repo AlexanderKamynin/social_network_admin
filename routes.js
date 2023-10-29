@@ -14,7 +14,6 @@ if(DIR == "./build")
 else
 {
     AdminTools = require(`./build/js/server/admin.js`);
-    //AdminTools = require(`${DIR}/js/admin.js`);
 }
 
 const admin_tools = new AdminTools();

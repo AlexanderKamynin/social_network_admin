@@ -37,8 +37,14 @@ class AdminTools
             let posts = this.news[idx];
             if(friends_id.includes(posts.id))
             {
+                const friend_idx = this.all_users.map((user) => {
+                    return parseInt(user.id);
+                }).indexOf(parseInt(posts.id));
+                const friend_info = this.all_users[friend_idx];
+
                 user_news.push({
-                    id: posts.id,
+                    name: friend_info.name,
+                    avatar: friend_info.avatar,
                     posts: posts.posts
                 });
             }

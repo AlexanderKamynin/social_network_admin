@@ -15,34 +15,38 @@ head
 div.main 
     div.user_info
 
+    div.buttons
+        button.friends
+            ="Друзья"
+
+        button.news
+            ="Новости"
+
+        button.back
+            ="Вернуться назад"
+
+
     div.user_change_info
-        input.name(type="text")
-        input.date(type="date")
-        input.email(type="email")
+        p
+            ="Изменить данные?"
+        div
+            input.name(type="text")
+            input.date(type="date")
+            input.email(type="email")
 
-        select.role
-            option(value="user")
-                ="Пользователь"
-            option(value="admin")
-                ="Администратор"
+            select.role
+                option(value="Пользователь")
+                    ="Пользователь"
+                option(value="Администратор")
+                    ="Администратор"
 
-        select.status
-            option(value="unconfirmed")
-                ="Неподтвержденный"
-            option(value="active")
-                ="Активный"
-            option(value="blocked")
-                ="Заблокированный"
-
-    button.save
-        ="Сохранить изменения"
-
-    button.friends
-        ="Друзья"
-
-    button.news
-        ="Новости"
-
-    button.back
-        ="Вернуться назад"
-        
+            select.status
+                option(value="Неподтвержденный")
+                    ="Неподтвержденный"
+                option(value="Активный")
+                    ="Активный"
+                option(value="Заблокированный")
+                    ="Заблокированный"
+            
+        button.save
+            ="Сохранить изменения"

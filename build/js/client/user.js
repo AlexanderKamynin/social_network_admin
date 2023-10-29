@@ -21,7 +21,7 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
         current_user = users[users.map(function (user) {
           return parseInt(user.id);
         }).indexOf(parseInt(current_user_id))];
-        $(".user_info").append("\n    <p>ID: ".concat(current_user_id, "</p>\n    <p>\u0418\u043C\u044F: ").concat(current_user.name, "</p>\n    <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(current_user.date, "</p>\n    <p>email: ").concat(current_user.email, "</p>\n    "));
+        $(".user_info").append("\n    <p>ID: ".concat(current_user_id, "</p>\n    <p>\u0418\u043C\u044F: ").concat(current_user.name, "</p>\n    <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(current_user.date, "</p>\n    <p>email: ").concat(current_user.email, "</p>\n    <p>\u0420\u043E\u043B\u044C: ").concat(current_user.role, "</p>\n    <p>\u0421\u0442\u0430\u0442\u0443\u0441: ").concat(current_user.status, "</p>\n    "));
         document.querySelector(".save").addEventListener('click', function (event) {
           save_changes();
         });
