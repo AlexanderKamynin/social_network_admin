@@ -3,7 +3,6 @@ const webpack = require("webpack");
 const path = require("path");
 const fs = require("fs");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const pages = fs.readdirSync("./src/views").filter(name => name.endsWith(".pug"));
 
@@ -12,6 +11,7 @@ module.exports = {
     mode: "development",
     devtool: false,
     entry: {
+        admin: './src/scripts/server/admin.js',
         admin_panel: './webpack_entry/admin_panel.js',
         user: './webpack_entry/user.js',
         friends: './webpack_entry/friends.js',
@@ -25,7 +25,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\/src\/scripts\/*.js$/,
+                test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
@@ -44,7 +44,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\/src\/views\/*.pug$/,
+                test: /\.pug$/,
                 use: [
                     'pug-loader'
                 ],
@@ -55,12 +55,12 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             $: './jquery',
-            jQuery: './jquery'
+            jQuery: 'jquery'
         }),
         ...pages.map(file => new HtmlWebpackPlugin({
             scriptLoading: "blocking",
             template: `./src/views/${file}`,
-            templateParameters: {dir: "./dist"},
+            templateParameters: {DIR: "/dist"},
             filename: `./html/${file.replace(/\.pug/, '.html')}`,
             chunks: [file.replace(/\.pug/, "")]
         })),

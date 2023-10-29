@@ -1,3 +1,5 @@
+import { get_selected_user, get_users_table } from "./request";
+
 let current_user = null;
 
 

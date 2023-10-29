@@ -1,3 +1,5 @@
+import { get_selected_user, get_user_news } from "./request";
+
 let selected_user_id = null;
 
 

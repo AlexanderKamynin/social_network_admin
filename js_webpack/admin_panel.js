@@ -1,3 +1,5 @@
+import { get_users_table } from "./request";
+
 let users = null;
 
 $(document).ready(async() => {

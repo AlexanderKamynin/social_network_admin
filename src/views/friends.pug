@@ -1,13 +1,16 @@
 doctype html
 head
     meta(charset='utf-8')
-    link(rel='stylesheet' href='/build/css/friends.css')
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
-    script(src="/build/js/jquery.js")
-    script(src="/build/js/client/friends.js")
-    script(src="/build/js/client/request.js")
+    if DIR === "/build"
+        link(rel='stylesheet' href=`${DIR}/css/friends.css`)
+        script(src=`${DIR}/js/jquery.js`)
+        script(src=`${DIR}/js/client/friends.js`)
+        script(src=`${DIR}/js/client/request.js`)
+    else 
+        script(src=`${DIR}/js/friends.js`)
 
 div.main 
     div.friends_table

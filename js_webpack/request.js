@@ -24,7 +24,7 @@ function go_to_page(URL)
 }
 
 
-async function get_users_table()
+export async function get_users_table()
 {
     let users_table = null;
     await send_request("post", "/get_users")
@@ -37,7 +37,7 @@ async function get_users_table()
 }
 
 
-async function get_selected_user()
+export async function get_selected_user()
 {
     let selected_user = null;
     await send_request("post", "/get_selected_user")
@@ -50,7 +50,7 @@ async function get_selected_user()
 }
 
 
-async function get_user_news(id)
+export async function get_user_news(id)
 {
     let user_news = null;
     let data = {
@@ -67,7 +67,7 @@ async function get_user_news(id)
 }
 
 
-async function change_user_info(user_info)
+export async function change_user_info(user_info)
 {
     await send_request("post", "/change_user_info", user_info);
 

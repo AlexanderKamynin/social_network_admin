@@ -13,7 +13,11 @@ const fsExtra = require('fs-extra');
 function templates(cb) {
     //console.log("Views building");
     src('./src/views/*.pug')
-        .pipe(pug())
+        .pipe(pug({
+            data: {
+                DIR: "/build"
+            }
+        }))
         .pipe(clean_html())
         .pipe(dest('./build/html'));
     cb();

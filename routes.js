@@ -2,7 +2,21 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 
-const AdminTools = require("./build/js/server/admin.js")
+let DIR = "./build";
+//let DIR = "./dist";
+
+let AdminTools = null;
+
+if(DIR == "./build")
+{
+    AdminTools = require(`${DIR}/js/server/admin.js`);
+}
+else
+{
+    AdminTools = require(`./build/js/server/admin.js`);
+    //AdminTools = require(`${DIR}/js/admin.js`);
+}
+
 const admin_tools = new AdminTools();
 let users_table = admin_tools.get_users();
 
@@ -14,7 +28,7 @@ router.get('/', (request, response) => {
 
 router.get('/admin_panel', (request, response) => {
     admin_tools.set_selected_user(0);
-    response.sendFile(path.join(__dirname, "./build/html/admin_panel.html"));
+    response.sendFile(path.join(__dirname, `${DIR}/html/admin_panel.html`));
 });
 
 router.post("/get_users", (request, response) => {
@@ -48,16 +62,16 @@ router.post("/change_user_info", (request, response) => {
 })
 
 router.get("/users/:user_id([0-9]{1,})/friends", (request, response) => {
-    response.sendFile(path.join(__dirname, "./build/html/friends.html"));
+    response.sendFile(path.join(__dirname, `${DIR}/html/friends.html`));
 });
 
 router.get("/users/:user_id([0-9]{1,})/news", (request, response) => {
-    response.sendFile(path.join(__dirname, "./build/html/news.html"));
+    response.sendFile(path.join(__dirname, `${DIR}/html/news.html`));
 })
 
 router.get("/users/:user_id([0-9]{1,})", (request, response) => {
     admin_tools.set_selected_user(request.params.user_id);
-    response.sendFile(path.join(__dirname, "./build/html/user.html"));
+    response.sendFile(path.join(__dirname, `${DIR}/html/user.html`));
 });
 
 
