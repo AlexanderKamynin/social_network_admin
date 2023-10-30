@@ -54,11 +54,11 @@ function scripts_files(cb) {
     cb();
 }
 
-function images(cb) {
-    src('./src/img/**')
-        .pipe(dest('./build/img'));
-    cb();
-}
+// function images(cb) {
+//     src('./src/img/**')
+//         .pipe(dest('./build/img'));
+//     cb();
+// }
 
 function clean(cb) {
     fsExtra.emptyDirSync("./build");
@@ -66,7 +66,7 @@ function clean(cb) {
 }
 
 function build(cb) {
-    return parallel(templates, styles, scripts_files, images)(cb);
+    return parallel(templates, styles, scripts_files)(cb);
 }
 
 exports.default = series(clean, build)

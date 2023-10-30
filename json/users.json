@@ -5,17 +5,17 @@
             "name": "Мистер А звездочка",
             "date": "10-21-2023",
             "email": "stypeetojizn@mail.scype",
-            "avatar": "11.jpg",
+            "avatar": "50.jpg",
             "role": "Администратор",
             "status": "Активный",
-            "friends": [2, 3]
+            "friends": [2, 3, 4, 6, 7]
         },
         {
             "id": 2,
             "name": "Danilka Solomin",
             "date": "10-01-1995",
             "email": "yadanilka@danilka.com",
-            "avatar": "9.jpg",
+            "avatar": "100.jpg",
             "role": "Пользователь",
             "status": "Активный",
             "friends": [1, 3]
@@ -25,27 +25,27 @@
             "name": "Kostya kak tam Valentina",
             "date": "10-11-2023",
             "email": "siderblablabla@gmail.com",
-            "avatar": "3.jpg",
+            "avatar": "200.jpg",
             "role": "Пользователь",
             "status": "Активный",
-            "friends": null
+            "friends": [1, 2]
         },
         {
             "id": 4,
             "name": "Kirieshka",
             "date": "01-09-1991",
             "email": "SROCHNO@decanat.com",
-            "avatar": "8.jpg",
+            "avatar": "500.jpg",
             "role": "Пользователь",
             "status": "Подтвержденный",
-            "friends": [1,2]
+            "friends": [1]
         },
         {
             "id": 5,
             "name": "Ярик Коптелов",
             "date": "01-09-1992",
             "email": "tvoicrush@dopsa.matan",
-            "avatar": "kopya.jpg",
+            "avatar": "1000.jpg",
             "role": "Пользователь",
             "status": "Заблокированный",
             "friends": null
@@ -55,20 +55,20 @@
             "name": "Леночка Найденова",
             "date": "25-07-2003",
             "email": "lenanaidyonova123@mail.ru",
-            "avatar": "6.jpg",
+            "avatar": "2000.jpg",
             "role": "Администратор",
             "status": "Активный",
-            "friends": [2,5,1,7]
+            "friends": [1, 7]
         },
         {
             "id": 7,
             "name": "Ваш Д.Павлов",
             "date": "01-09-2022",
             "email": "dapavlov@etu.ru",
-            "avatar": "pavlov.jpg",
+            "avatar": "5000.jpg",
             "role": "Администратор",
-            "status": "Заблокированный",
-            "friends": [2,5]
+            "status": "Подтвержденный",
+            "friends": [1, 6]
         }
     ]
 }
