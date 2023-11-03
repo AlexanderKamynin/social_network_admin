@@ -44,7 +44,8 @@ router.post("/auth", (request, responce) => {
     responce.send(
         JSON.stringify({
             "accepted": auth_result.accepted,
-            "reason": auth_result.reason
+            "reason": auth_result.reason,
+            "user": auth_result.user
         })
     )
 });

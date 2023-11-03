@@ -84,6 +84,7 @@ class AdminTools
         {
             auth_info = {
                 accepted: false,
+                user: null,
                 reason: "Нет пользователя с таким email"
             };
         } 
@@ -91,12 +92,14 @@ class AdminTools
         {
             auth_info = {
                 accepted: true,
+                user: this.all_users[user_idx],
                 reason: "Успешная аутентификация"
             };
         }
         else {
             auth_info = {
                 accepted: false,
+                user: null,
                 reason: "Неверный пароль"
             };
         }

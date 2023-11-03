@@ -79,16 +79,19 @@ var AdminTools = /*#__PURE__*/function () {
       if (user_idx == -1) {
         auth_info = {
           accepted: false,
+          user: null,
           reason: "Нет пользователя с таким email"
         };
       } else if (this.all_users[user_idx].password === password) {
         auth_info = {
           accepted: true,
+          user: this.all_users[user_idx],
           reason: "Успешная аутентификация"
         };
       } else {
         auth_info = {
           accepted: false,
+          user: null,
           reason: "Неверный пароль"
         };
       }
