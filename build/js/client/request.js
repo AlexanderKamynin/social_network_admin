@@ -31,7 +31,7 @@ function _get_users_table() {
         case 0:
           users_table = null;
           _context.next = 3;
-          return send_request("post", "/get_users").then(function (res) {
+          return send_request("get", "/get_users").then(function (res) {
             return res.json();
           }).then(function (res) {
             users_table = res["users_table"];
@@ -57,7 +57,7 @@ function _get_selected_user() {
         case 0:
           selected_user = null;
           _context2.next = 3;
-          return send_request("post", "/get_selected_user").then(function (res) {
+          return send_request("get", "/get_selected_user").then(function (res) {
             return res.json();
           }).then(function (res) {
             selected_user = res["user_id"];
@@ -86,7 +86,7 @@ function _get_user_news() {
             user_id: id
           };
           _context3.next = 4;
-          return send_request("post", "/get_user_news", data).then(function (res) {
+          return send_request("get", "/get_user_news", data).then(function (res) {
             return res.json();
           }).then(function (res) {
             user_news = res["news"];

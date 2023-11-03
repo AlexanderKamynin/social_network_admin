@@ -27,7 +27,7 @@ function go_to_page(URL)
 async function get_users_table()
 {
     let users_table = null;
-    await send_request("post", "/get_users")
+    await send_request("get", "/get_users")
     .then(res => res.json())
     .then(res => {
         users_table = res["users_table"];
@@ -39,7 +39,7 @@ async function get_users_table()
 async function get_selected_user()
 {
     let selected_user = null;
-    await send_request("post", "/get_selected_user")
+    await send_request("get", "/get_selected_user")
     .then(res => res.json())
     .then(res => {
         selected_user = res["user_id"];
@@ -55,7 +55,7 @@ async function get_user_news(id)
         user_id: id
     };
 
-    await send_request("post", "/get_user_news", data)
+    await send_request("get", "/get_user_news", data)
     .then(res => res.json())
     .then(res => {
         user_news = res["news"];

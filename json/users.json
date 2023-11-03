@@ -3,7 +3,7 @@
         {
             "id": 1,
             "name": "Мистер А звездочка",
-            "date": "10-21-2023",
+            "date": "2023-08-01",
             "email": "stypeetojizn@mail.scype",
             "avatar": "50.jpg",
             "role": "Администратор",
@@ -13,7 +13,7 @@
         {
             "id": 2,
             "name": "Danilka Solomin",
-            "date": "10-01-1995",
+            "date": "2023-08-01",
             "email": "yadanilka@danilka.com",
             "avatar": "100.jpg",
             "role": "Пользователь",
@@ -23,7 +23,7 @@
         {
             "id": 3,
             "name": "Kostya kak tam Valentina",
-            "date": "10-11-2023",
+            "date": "2023-08-01",
             "email": "siderblablabla@gmail.com",
             "avatar": "200.jpg",
             "role": "Пользователь",
@@ -33,17 +33,17 @@
         {
             "id": 4,
             "name": "Kirieshka",
-            "date": "01-09-1991",
+            "date": "2023-08-01",
             "email": "SROCHNO@decanat.com",
             "avatar": "500.jpg",
             "role": "Пользователь",
-            "status": "Подтвержденный",
+            "status": "Активный",
             "friends": [1]
         },
         {
             "id": 5,
             "name": "Ярик Коптелов",
-            "date": "01-09-1992",
+            "date": "2023-08-01",
             "email": "tvoicrush@dopsa.matan",
             "avatar": "1000.jpg",
             "role": "Пользователь",
@@ -53,7 +53,7 @@
         {
             "id": 6,
             "name": "Леночка Найденова",
-            "date": "25-07-2003",
+            "date": "2023-08-01",
             "email": "lenanaidyonova123@mail.ru",
             "avatar": "2000.jpg",
             "role": "Администратор",
@@ -63,11 +63,11 @@
         {
             "id": 7,
             "name": "Ваш Д.Павлов",
-            "date": "01-09-2022",
+            "date": "2023-08-01",
             "email": "dapavlov@etu.ru",
             "avatar": "5000.jpg",
             "role": "Администратор",
-            "status": "Подтвержденный",
+            "status": "Активный",
             "friends": [1, 6]
         }
     ]

@@ -30,7 +30,7 @@ router.get('/admin_panel', (request, response) => {
     response.sendFile(path.join(__dirname, `${DIR}/html/admin_panel.html`));
 });
 
-router.post("/get_users", (request, response) => {
+router.get("/get_users", (request, response) => {
     response.send(
         JSON.stringify({
             "users_table": users_table
@@ -38,7 +38,7 @@ router.post("/get_users", (request, response) => {
     );
 })
 
-router.post("/get_selected_user", (request, response) => {
+router.get("/get_selected_user", (request, response) => {
     response.send(
         JSON.stringify({
             "user_id": admin_tools.get_selected_user()
@@ -46,7 +46,7 @@ router.post("/get_selected_user", (request, response) => {
     )
 })
 
-router.post("/get_user_news", (request, response) => {
+router.get("/get_user_news", (request, response) => {
     response.send(
         JSON.stringify({
             "news": admin_tools.get_user_news(request.body.user_id)
