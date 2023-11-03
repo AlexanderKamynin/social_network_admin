@@ -36,7 +36,18 @@ router.get("/get_users", (request, response) => {
             "users_table": users_table
         })
     );
-})
+});
+
+router.post("/auth", (request, responce) => {
+    auth_result = admin_tools.authenticate(request.body.email, request.body.password);
+
+    responce.send(
+        JSON.stringify({
+            "accepted": auth_result.accepted,
+            "reason": auth_result.reason
+        })
+    )
+});
 
 router.get("/get_selected_user", (request, response) => {
     response.send(

@@ -72,6 +72,37 @@ class AdminTools
             }
         }
     }
+
+    authenticate(email, password)
+    {
+        let auth_info = {}
+        const user_idx = this.all_users.map((user) => {
+            return user.email;
+        }).indexOf(email);
+
+        if(user_idx == -1)
+        {
+            auth_info = {
+                accepted: false,
+                reason: "Нет пользователя с таким email"
+            };
+        } 
+        else if(this.all_users[user_idx].password === password)
+        {
+            auth_info = {
+                accepted: true,
+                reason: "Успешная аутентификация"
+            };
+        }
+        else {
+            auth_info = {
+                accepted: false,
+                reason: "Неверный пароль"
+            };
+        }
+
+        return auth_info;
+    }
 }
 
 

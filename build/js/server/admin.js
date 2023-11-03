@@ -69,6 +69,31 @@ var AdminTools = /*#__PURE__*/function () {
         }
       }
     }
+  }, {
+    key: "authenticate",
+    value: function authenticate(email, password) {
+      var auth_info = {};
+      var user_idx = this.all_users.map(function (user) {
+        return user.email;
+      }).indexOf(email);
+      if (user_idx == -1) {
+        auth_info = {
+          accepted: false,
+          reason: "Нет пользователя с таким email"
+        };
+      } else if (this.all_users[user_idx].password === password) {
+        auth_info = {
+          accepted: true,
+          reason: "Успешная аутентификация"
+        };
+      } else {
+        auth_info = {
+          accepted: false,
+          reason: "Неверный пароль"
+        };
+      }
+      return auth_info;
+    }
   }]);
   return AdminTools;
 }();

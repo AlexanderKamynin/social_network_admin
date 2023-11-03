@@ -2,6 +2,7 @@
     "users": [
         {
             "id": 1,
+            "password": "12345",
             "name": "Мистер А звездочка",
             "date": "2023-08-01",
             "email": "stypeetojizn@mail.scype",
@@ -12,6 +13,7 @@
         },
         {
             "id": 2,
+            "password": "12345",
             "name": "Danilka Solomin",
             "date": "2023-08-01",
             "email": "yadanilka@danilka.com",
@@ -22,6 +24,7 @@
         },
         {
             "id": 3,
+            "password": "12345",
             "name": "Kostya kak tam Valentina",
             "date": "2023-08-01",
             "email": "siderblablabla@gmail.com",
@@ -32,6 +35,7 @@
         },
         {
             "id": 4,
+            "password": "12345",
             "name": "Kirieshka",
             "date": "2023-08-01",
             "email": "SROCHNO@decanat.com",
@@ -42,6 +46,7 @@
         },
         {
             "id": 5,
+            "password": "12345",
             "name": "Ярик Коптелов",
             "date": "2023-08-01",
             "email": "tvoicrush@dopsa.matan",
@@ -52,6 +57,7 @@
         },
         {
             "id": 6,
+            "password": "12345",
             "name": "Леночка Найденова",
             "date": "2023-08-01",
             "email": "lenanaidyonova123@mail.ru",
@@ -62,6 +68,7 @@
         },
         {
             "id": 7,
+            "password": "12345",
             "name": "Ваш Д.Павлов",
             "date": "2023-08-01",
             "email": "dapavlov@etu.ru",
