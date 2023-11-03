@@ -1,12 +1,20 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const cors = require("cors");
 
 const PORT = 3000;
 https_options = {
     key: fs.readFileSync('./cert/key.pem', 'utf-8'),
     cert: fs.readFileSync('./cert/cert.pem', 'utf-8')
 };
+
+app.use(
+    cors({
+        origin: ['http://localhost:4200'],
+        credentials: true,
+    })
+);
 
 app.use(require("express").json());
 app.use(require("express").urlencoded({ extended: true }));
