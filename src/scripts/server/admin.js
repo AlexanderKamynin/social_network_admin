@@ -32,12 +32,11 @@ class AdminTools
         }
 
         let friends = [];
-        for(let idx = 0; idx < friends_id; idx++)
+        for(let idx = 0; idx < friends_id.length; idx++)
         {
             let friend = this.all_users[this.all_users.map((user) => {
                 return parseInt(user.id)
             }).indexOf(parseInt(friends_id[idx]))];
-
             friends.push(friend);
         }
 
@@ -134,7 +133,7 @@ class AdminTools
     {
         const user_idx = this.all_users.map((user) => {
             return parseInt(user.id);
-        }).indexOf(user_id);
+        }).indexOf(parseInt(user_id));
 
         if(img_type.split('/')[0] !== "image")
         {
@@ -165,10 +164,100 @@ class AdminTools
     {
         const user_idx = this.all_users.map((user) => {
             return parseInt(user.id);
-        }).indexOf(user_id);
+        }).indexOf(parseInt(user_id));
 
         this.all_users[user_idx].avatar = "default.png";
         return this.all_users[user_idx];
+    }
+
+    add_friend(user_id, friend_id)
+    {
+        friend_id = parseInt(friend_id);
+
+        const user_idx = this.all_users.map((user) => {
+            return parseInt(user.id);
+        }).indexOf(parseInt(user_id));
+
+        const friend_idx = this.all_users.map((user) => {
+            return parseInt(user.id);
+        }).indexOf(parseInt(friend_id));
+
+        if(this.all_users[user_idx].friends.indexOf(parseInt(friend_id)) != -1){
+            return {
+                success: false,
+                reason: 'Пользователь уже ваш друг',
+                user: this.all_users[user_idx]
+            }
+        }
+        else if (user_id == friend_id) {
+            return {
+                success: false,
+                reason: 'Вам не с кем дружить?(',
+                user: this.all_users[user_idx]
+            }
+        }
+
+        if(friend_idx != -1){
+            this.all_users[user_idx].friends.push(parseInt(friend_id));
+
+            return {
+                success: true,
+                reason: 'Все ок',
+                user: this.all_users[user_idx]
+            }
+        }
+        
+        return {
+            success: false,
+            reason: 'Пользователя с таким id не существует',
+            user: this.all_users[user_idx]
+        }
+    }
+
+    delete_friend(user_id, friend_id)
+    {
+        friend_id = parseInt(friend_id);
+
+        const user_idx = this.all_users.map((user) => {
+            return parseInt(user.id);
+        }).indexOf(parseInt(user_id));
+
+        const friend_idx = this.all_users.map((user) => {
+            return parseInt(user.id);
+        }).indexOf(parseInt(friend_id));
+
+        if (user_id == friend_id) {
+            return {
+                success: false,
+                reason: 'Ну и ну... сам себя стереть хочишь?',
+                user: this.all_users[user_idx]
+            }
+        }
+
+        if(friend_idx != -1){
+            if (this.all_users[user_idx].friends.indexOf(friend_id) != -1){
+                this.all_users[user_idx].friends.splice(this.all_users[user_idx].friends.indexOf(friend_id),1);
+
+                return {
+                    success: true,
+                    reason: 'Все ок',
+                    user: this.all_users[user_idx]
+                }
+            }
+            else {
+                return {
+                    success: false,
+                    reason: 'У выбранного пользователя нет такого друга',
+                    user: this.all_users[user_idx]
+                }
+            }
+        }
+        
+        return {
+            success: false,
+            reason: 'Пользователя с таким id не существует',
+            user: this.all_users[user_idx]
+        }
     }
 }
 

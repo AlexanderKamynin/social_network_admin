@@ -72,6 +72,30 @@ router.post("/upload_avatar", (request, response) => {
     );
 })
 
+router.post("/add_friend", (request, response) => {
+    result = admin_tools.add_friend(request.body.user_id, request.body.friend_id);
+
+    response.send(
+        JSON.stringify({
+            "success": result.success,
+            "reason": result.reason,
+            "new_user_data": result.user
+        })
+    )
+})
+
+router.post("/delete_friend", (request, response) => {
+    result = admin_tools.delete_friend(request.body.user_id, request.body.friend_id);
+
+    response.send(
+        JSON.stringify({
+            "success": result.success,
+            "reason": result.reason,
+            "new_user_data": result.user
+        })
+    )
+})
+
 router.get("/get_user_friends/:user_id([0-9]{1,})", (request, response) => {
     friends = admin_tools.get_user_friends(request.params.user_id);
 
