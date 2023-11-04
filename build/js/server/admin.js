@@ -26,6 +26,25 @@ var AdminTools = /*#__PURE__*/function () {
       return this.selected_user;
     }
   }, {
+    key: "get_user_friends",
+    value: function get_user_friends(user_id) {
+      var user_idx = this.all_users.map(function (user) {
+        return parseInt(user.id);
+      }).indexOf(parseInt(user_id));
+      var friends_id = this.all_users[user_idx].friends;
+      if (!friends_id) {
+        return null;
+      }
+      var friends = [];
+      for (var idx = 0; idx < friends_id; idx++) {
+        var friend = this.all_users[this.all_users.map(function (user) {
+          return parseInt(user.id);
+        }).indexOf(parseInt(friends_id[idx]))];
+        friends.push(friend);
+      }
+      return friends;
+    }
+  }, {
     key: "get_user_news",
     value: function get_user_news(user_id) {
       var user_idx = this.all_users.map(function (user) {
@@ -96,6 +115,41 @@ var AdminTools = /*#__PURE__*/function () {
         };
       }
       return auth_info;
+    }
+  }, {
+    key: "upload_avatar",
+    value: function upload_avatar(user_id, img_name, img_type) {
+      var user_idx = this.all_users.map(function (user) {
+        return parseInt(user.id);
+      }).indexOf(user_id);
+      if (img_type.split('/')[0] !== "image") {
+        return {
+          success: false,
+          reason: 'Неправильный формат для изображения',
+          user: this.all_users[user_idx]
+        };
+      } else if (!file_system.existsSync('./src/img/' + img_name)) {
+        return {
+          success: false,
+          reason: 'Выбранного файла не существует',
+          user: this.all_users[user_idx]
+        };
+      }
+      this.all_users[user_idx].avatar = img_name;
+      return {
+        success: true,
+        reason: 'Все ок',
+        user: this.all_users[user_idx]
+      };
+    }
+  }, {
+    key: "delete_avatar",
+    value: function delete_avatar(user_id) {
+      var user_idx = this.all_users.map(function (user) {
+        return parseInt(user.id);
+      }).indexOf(user_id);
+      this.all_users[user_idx].avatar = "default.png";
+      return this.all_users[user_idx];
     }
   }]);
   return AdminTools;

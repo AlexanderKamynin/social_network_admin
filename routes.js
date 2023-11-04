@@ -38,14 +38,46 @@ router.get("/get_users", (request, response) => {
     );
 });
 
-router.post("/auth", (request, responce) => {
+router.post("/auth", (request, response) => {
     auth_result = admin_tools.authenticate(request.body.email, request.body.password);
 
-    responce.send(
+    response.send(
         JSON.stringify({
             "accepted": auth_result.accepted,
             "reason": auth_result.reason,
             "user": auth_result.user
+        })
+    )
+});
+
+router.post("/delete_avatar", (request, response) => {
+    new_user_data = admin_tools.delete_avatar(request.body.user_id);
+
+    response.send(
+        JSON.stringify({
+            "new_user_data": new_user_data
+        })
+    );
+});
+
+router.post("/upload_avatar", (request, response) => {
+    result = admin_tools.upload_avatar(request.body.user_id, request.body.name, request.body.type);
+
+    response.send(
+        JSON.stringify({
+            "success": result.success,
+            "reason": result.reason,
+            "new_user_data": result.user
+        })
+    );
+})
+
+router.get("/get_user_friends/:user_id([0-9]{1,})", (request, response) => {
+    friends = admin_tools.get_user_friends(request.params.user_id);
+
+    response.send(
+        JSON.stringify({
+            "friends": friends
         })
     )
 });

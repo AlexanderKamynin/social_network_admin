@@ -21,6 +21,29 @@ class AdminTools
         return this.selected_user;
     }
 
+    get_user_friends(user_id)
+    {
+        const user_idx = this.all_users.map((user) => {
+            return parseInt(user.id);
+        }).indexOf(parseInt(user_id));
+        let friends_id = this.all_users[user_idx].friends;
+        if (!friends_id){
+            return null;
+        }
+
+        let friends = [];
+        for(let idx = 0; idx < friends_id; idx++)
+        {
+            let friend = this.all_users[this.all_users.map((user) => {
+                return parseInt(user.id)
+            }).indexOf(parseInt(friends_id[idx]))];
+
+            friends.push(friend);
+        }
+
+        return friends;
+    }
+
     get_user_news(user_id)
     {
         const user_idx = this.all_users.map((user) => {
@@ -105,6 +128,47 @@ class AdminTools
         }
 
         return auth_info;
+    }
+
+    upload_avatar(user_id, img_name, img_type)
+    {
+        const user_idx = this.all_users.map((user) => {
+            return parseInt(user.id);
+        }).indexOf(user_id);
+
+        if(img_type.split('/')[0] !== "image")
+        {
+            return {
+                success: false,
+                reason: 'Неправильный формат для изображения',
+                user: this.all_users[user_idx]
+            }
+        }
+        else if(!file_system.existsSync('./src/img/' + img_name))
+        {
+            return {
+                success: false,
+                reason: 'Выбранного файла не существует',
+                user: this.all_users[user_idx]
+            }
+        }
+
+        this.all_users[user_idx].avatar = img_name;
+        return {
+            success: true,
+            reason: 'Все ок',
+            user: this.all_users[user_idx]
+        }
+    }
+
+    delete_avatar(user_id)
+    {
+        const user_idx = this.all_users.map((user) => {
+            return parseInt(user.id);
+        }).indexOf(user_id);
+
+        this.all_users[user_idx].avatar = "default.png";
+        return this.all_users[user_idx];
     }
 }
 
