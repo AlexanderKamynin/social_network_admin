@@ -15,7 +15,7 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
       case 2:
         selected_user_id = _context.sent;
         _context.next = 5;
-        return get_user_news(selected_user_id);
+        return get_friends_news(selected_user_id);
       case 5:
         news = _context.sent;
         posts_number = 1;

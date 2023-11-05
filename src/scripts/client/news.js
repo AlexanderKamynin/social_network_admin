@@ -3,7 +3,7 @@ let selected_user_id = null;
 
 $(document).ready(async() => {
     selected_user_id = await get_selected_user();
-    let news = await get_user_news(selected_user_id);
+    let news = await get_friends_news(selected_user_id);
     let posts_number = 1;
 
     if (news)

@@ -114,10 +114,18 @@ router.get("/get_selected_user", (request, response) => {
     )
 })
 
-router.get("/get_user_news", (request, response) => {
+router.get("/get_user_news/:user_id([0-9]{1,})", (request, response) => {
     response.send(
         JSON.stringify({
-            "news": admin_tools.get_user_news(request.body.user_id)
+            "news": admin_tools.get_user_news(request.params.user_id)
+        })
+    )
+})
+
+router.get("/get_friends_news/:user_id([0-9]{1,})", (request, response) => {
+    response.send(
+        JSON.stringify({
+            "news": admin_tools.get_friends_news(request.params.user_id)
         })
     )
 })

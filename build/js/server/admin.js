@@ -50,11 +50,31 @@ var AdminTools = /*#__PURE__*/function () {
       var user_idx = this.all_users.map(function (user) {
         return parseInt(user.id);
       }).indexOf(parseInt(user_id));
+      var user_news = [];
+      for (var idx = 0; idx < this.news.length; idx++) {
+        var posts = this.news[idx];
+        if (parseInt(user_id) == parseInt(posts.id)) {
+          var user_info = this.all_users[user_idx];
+          user_news.push({
+            name: user_info.name,
+            avatar: user_info.avatar,
+            posts: posts.posts
+          });
+        }
+      }
+      return user_news;
+    }
+  }, {
+    key: "get_friends_news",
+    value: function get_friends_news(user_id) {
+      var user_idx = this.all_users.map(function (user) {
+        return parseInt(user.id);
+      }).indexOf(parseInt(user_id));
       var friends_id = this.all_users[user_idx].friends;
       if (!friends_id) {
         return null;
       }
-      var user_news = [];
+      var friends_news = [];
       for (var idx = 0; idx < this.news.length; idx++) {
         var posts = this.news[idx];
         if (friends_id.includes(posts.id)) {
@@ -62,14 +82,14 @@ var AdminTools = /*#__PURE__*/function () {
             return parseInt(user.id);
           }).indexOf(parseInt(posts.id));
           var friend_info = this.all_users[friend_idx];
-          user_news.push({
+          friends_news.push({
             name: friend_info.name,
             avatar: friend_info.avatar,
             posts: posts.posts
           });
         }
       }
-      return user_news;
+      return friends_news;
     }
   }, {
     key: "set_selected_user",

@@ -48,14 +48,11 @@ async function get_selected_user()
     return selected_user;
 }
 
-async function get_user_news(id)
+async function get_friends_news(user_id)
 {
     let user_news = null;
-    let data = {
-        user_id: id
-    };
 
-    await send_request("get", "/get_user_news", data)
+    await send_request("get", `/get_friends_news/${user_id}`)
     .then(res => res.json())
     .then(res => {
         user_news = res["news"];

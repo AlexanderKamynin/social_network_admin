@@ -48,11 +48,37 @@ class AdminTools
         const user_idx = this.all_users.map((user) => {
             return parseInt(user.id);
         }).indexOf(parseInt(user_id));
+
+        let user_news = [];
+
+        for(let idx = 0; idx < this.news.length; idx++)
+        {
+            let posts = this.news[idx];
+            if(parseInt(user_id) == parseInt(posts.id))
+            {
+                const user_info = this.all_users[user_idx];
+
+                user_news.push({
+                    name: user_info.name,
+                    avatar: user_info.avatar,
+                    posts: posts.posts
+                });
+            }
+        }
+
+        return user_news;
+    }
+
+    get_friends_news(user_id)
+    {
+        const user_idx = this.all_users.map((user) => {
+            return parseInt(user.id);
+        }).indexOf(parseInt(user_id));
         let friends_id = this.all_users[user_idx].friends;
         if (!friends_id){
             return null;
         }
-        let user_news = [];
+        let friends_news = [];
 
         for(let idx = 0; idx < this.news.length; idx++)
         {
@@ -64,7 +90,7 @@ class AdminTools
                 }).indexOf(parseInt(posts.id));
                 const friend_info = this.all_users[friend_idx];
 
-                user_news.push({
+                friends_news.push({
                     name: friend_info.name,
                     avatar: friend_info.avatar,
                     posts: posts.posts
@@ -72,7 +98,7 @@ class AdminTools
             }
         }
 
-        return user_news;
+        return friends_news;
     }
 
     set_selected_user(user_id)

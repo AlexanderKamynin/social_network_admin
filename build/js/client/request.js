@@ -72,34 +72,31 @@ function _get_selected_user() {
   }));
   return _get_selected_user.apply(this, arguments);
 }
-function get_user_news(_x) {
-  return _get_user_news.apply(this, arguments);
+function get_friends_news(_x) {
+  return _get_friends_news.apply(this, arguments);
 }
-function _get_user_news() {
-  _get_user_news = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(id) {
-    var user_news, data;
+function _get_friends_news() {
+  _get_friends_news = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(user_id) {
+    var user_news;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
           user_news = null;
-          data = {
-            user_id: id
-          };
-          _context3.next = 4;
-          return send_request("get", "/get_user_news", data).then(function (res) {
+          _context3.next = 3;
+          return send_request("get", "/get_friends_news/".concat(user_id)).then(function (res) {
             return res.json();
           }).then(function (res) {
             user_news = res["news"];
           });
-        case 4:
+        case 3:
           return _context3.abrupt("return", user_news);
-        case 5:
+        case 4:
         case "end":
           return _context3.stop();
       }
     }, _callee3);
   }));
-  return _get_user_news.apply(this, arguments);
+  return _get_friends_news.apply(this, arguments);
 }
 function change_user_info(_x2) {
   return _change_user_info.apply(this, arguments);

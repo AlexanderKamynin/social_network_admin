@@ -28,7 +28,8 @@
     "gulp-uglify": "^3.0.2",
     "gulp4": "^4.0.2",
     "pug": "^3.0.2",
-    "pug-loader": "^2.4.0"
+    "pug-loader": "^2.4.0",
+    "socket.io": "^4.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
