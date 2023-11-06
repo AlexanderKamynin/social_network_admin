@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const fs = require("fs");
 const cors = require("cors");
+const socket = require("socket.io");
+
 
 const PORT = 3000;
 https_options = {
@@ -29,7 +31,22 @@ const {createServer} = require("https");
 app.use(require("express").static(__dirname));
 app.use("/", routes);
 
-
 const SERVER = createServer(https_options, app);
+
+const io = socket(SERVER, {
+    cors: {
+        origin: "*",
+        methods: "*"
+    }
+})
+io.on("connection", socket => {
+    socket.on('message', message => {
+        console.log('получил данные');
+
+        io.sockets.emit('server_msg', `получил твою смсчку: ${message}`);
+    })
+})
+
+
 SERVER.listen(PORT);
 console.log(`Server working using ${PORT} port on https://localhost:${PORT}/`);
