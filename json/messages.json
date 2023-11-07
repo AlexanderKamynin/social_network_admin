@@ -1,0 +1,22 @@
+{
+    "messages": [
+        {
+            "first_user_id": 2,
+            "second_user_id": 7,
+            "messages": [
+                {
+                    "sender": 2,
+                    "message": "hi bro"
+                },
+                {
+                    "sender": 2,
+                    "message": "what's up?"
+                },
+                {
+                    "sender": 7,
+                    "message": "okey..."
+                }
+            ]
+        }
+    ]
+}

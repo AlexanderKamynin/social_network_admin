@@ -135,6 +135,14 @@ router.get("/get_friends_news/:user_id([0-9]{1,})", (request, response) => {
     )
 })
 
+router.get("/get_user_messages/:user_id([0-9]{1,})/:friend_id([0-9]{1,})", (request, response) => {
+    response.send(
+        JSON.stringify({
+            "messages": admin_tools.get_user_messages(request.params.user_id, request.params.friend_id)
+        })
+    )
+})
+
 router.post("/change_user_info", (request, response) => {
     admin_tools.change_user_info(request.body.id, request.body);
     users_table = admin_tools.get_users();

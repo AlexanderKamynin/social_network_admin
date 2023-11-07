@@ -14,6 +14,7 @@ var AdminTools = /*#__PURE__*/function () {
     this.selected_user = 0;
     this.all_users = JSON.parse(file_system.readFileSync('./json/users.json', 'utf8')).users;
     this.news = JSON.parse(file_system.readFileSync('./json/news.json', 'utf-8')).news;
+    this.messages = JSON.parse(file_system.readFileSync('./json/messages.json', 'utf-8')).messages;
   }
   _createClass(AdminTools, [{
     key: "get_users",
@@ -64,6 +65,30 @@ var AdminTools = /*#__PURE__*/function () {
         }
       }
       return user_news;
+    }
+  }, {
+    key: "get_user_messages",
+    value: function get_user_messages(user_id, friend_id) {
+      user_id = parseInt(user_id);
+      friend_id = parseInt(friend_id);
+      this.messages = JSON.parse(file_system.readFileSync('./json/messages.json', 'utf-8')).messages;
+      var first_id = Math.min(user_id, friend_id);
+      var second_id = Math.max(user_id, friend_id);
+      for (var idx = 0; idx < this.messages.length; idx++) {
+        var message_info = this.messages[idx];
+        if (first_id == message_info.first_user_id && second_id == message_info.second_user_id) {
+          return {
+            "user": this.all_users[this.all_users.map(function (user) {
+              return parseInt(user.id);
+            }).indexOf(user_id)],
+            "friend": this.all_users[this.all_users.map(function (user) {
+              return parseInt(user.id);
+            }).indexOf(friend_id)],
+            "messages": message_info.messages
+          };
+        }
+      }
+      return null;
     }
   }, {
     key: "get_friends_news",
