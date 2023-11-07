@@ -45,6 +45,7 @@ class AdminTools
 
     get_user_news(user_id)
     {
+        this.news = JSON.parse(file_system.readFileSync('./json/news.json', 'utf-8')).news;
         const user_idx = this.all_users.map((user) => {
             return parseInt(user.id);
         }).indexOf(parseInt(user_id));
@@ -71,6 +72,7 @@ class AdminTools
 
     get_friends_news(user_id)
     {
+        this.news = JSON.parse(file_system.readFileSync('./json/news.json', 'utf-8')).news;
         const user_idx = this.all_users.map((user) => {
             return parseInt(user.id);
         }).indexOf(parseInt(user_id));

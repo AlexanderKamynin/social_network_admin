@@ -96,6 +96,11 @@ router.post("/delete_friend", (request, response) => {
     )
 })
 
+router.post("/add_user_news", (request, response) => {
+    console.log(request.body.data);
+    response.send();
+})
+
 router.get("/get_user_friends/:user_id([0-9]{1,})", (request, response) => {
     friends = admin_tools.get_user_friends(request.params.user_id);
 

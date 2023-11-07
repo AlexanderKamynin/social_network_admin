@@ -47,6 +47,7 @@ var AdminTools = /*#__PURE__*/function () {
   }, {
     key: "get_user_news",
     value: function get_user_news(user_id) {
+      this.news = JSON.parse(file_system.readFileSync('./json/news.json', 'utf-8')).news;
       var user_idx = this.all_users.map(function (user) {
         return parseInt(user.id);
       }).indexOf(parseInt(user_id));
@@ -67,6 +68,7 @@ var AdminTools = /*#__PURE__*/function () {
   }, {
     key: "get_friends_news",
     value: function get_friends_news(user_id) {
+      this.news = JSON.parse(file_system.readFileSync('./json/news.json', 'utf-8')).news;
       var user_idx = this.all_users.map(function (user) {
         return parseInt(user.id);
       }).indexOf(parseInt(user_id));
