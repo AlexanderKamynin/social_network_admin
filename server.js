@@ -60,6 +60,47 @@ function add_news_handler(data){
     file_system.writeFileSync('./json/news.json', JSON.stringify({"news": all_news}));
 }
 
+function add_message_handler(data){
+    //console.log(data);
+    all_messages = JSON.parse(file_system.readFileSync('./json/messages.json', 'utf-8')).messages;
+    let is_contain_dialog = false;
+
+    for(let idx = 0; idx < all_messages.length; idx++)
+    {
+        if(
+            (all_messages[idx].first_user_id == Math.min(parseInt(data.user_id), parseInt(data.friend_id))) &&
+            (all_messages[idx].second_user_id == Math.max(parseInt(data.user_id), parseInt(data.friend_id)))
+        )
+        {
+            is_contain_dialog = true;
+            all_messages[idx].messages.push(
+                {
+                    "sender": data.user_id,
+                    "message": data.new_message
+                }
+            )
+        }
+    }
+
+    if(!is_contain_dialog)
+    {
+        all_messages.push(
+            {
+                "first_user_id": Math.min(parseInt(data.user_id), parseInt(data.friend_id)),
+                "second_user_id": Math.max(parseInt(data.user_id), parseInt(data.friend_id)),
+                "messages": [
+                    {
+                        "sender": data.user_id,
+                        "message": data.new_message
+                    }
+                ]
+            }
+        )
+    }
+
+    file_system.writeFileSync('./json/messages.json', JSON.stringify({"messages": all_messages}));
+}
+
 
 module.exports = add_news_handler;
 
@@ -73,6 +114,11 @@ io.on("connection", socket => {
     socket.on("add_news_client", data => {
         add_news_handler(data);
         io.sockets.emit("add_news_server", data);
+    })
+
+    socket.on("add_message_client", data => {
+        add_message_handler(data);
+        io.sockets.emit("add_message_server", data);
     })
 })
 
