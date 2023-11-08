@@ -2,6 +2,7 @@
 @padding_left: 2rem;
 @user_info_margin: 5px;
 @image_size: 124px;
+@margin_size: 15px;
 
 * {
     font-family: 'Ubuntu', sans-serif;
@@ -65,4 +66,25 @@ a:visited {
 a:hover,
 a:active{
     text-decoration: underline;
+}
+
+button {
+    margin: @margin_size;
+}
+
+button {
+    background-color: #1473adcd;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: @font_size;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0f476acd;
 }

@@ -22,4 +22,8 @@ $(document).ready(async() => {
 
         $(".users_table").append(`<div class="user_info">${user_info}</div>`);
     }
+
+    document.querySelector(".exit").addEventListener('click', function(event) {
+        go_to_page(`http://localhost:4200/profile`);
+    });
 })

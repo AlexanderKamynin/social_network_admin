@@ -19,7 +19,10 @@ $(document).ready( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRunt
           user_info = "\n            <img src='/src/img/".concat(user.avatar, "'>\n            <div class=\"description\">\n            <p>ID: ").concat(user.id, "</p>\n            <p>\u0418\u043C\u044F: ").concat(user.name, "</p>\n            <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F: ").concat(user.date, "</p>\n            <p>email: ").concat(user.email, "</p>\n            <p>\u0420\u043E\u043B\u044C: ").concat(user.role, "</p>\n            <p>\u0421\u0442\u0430\u0442\u0443\u0441: ").concat(user.status, "<p>\n\n            <a href='/users/").concat(user.id, "'>\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435</a>\n            </div>\n        ");
           $(".users_table").append("<div class=\"user_info\">".concat(user_info, "</div>"));
         }
-      case 4:
+        document.querySelector(".exit").addEventListener('click', function (event) {
+          go_to_page("http://localhost:4200/profile");
+        });
+      case 5:
       case "end":
         return _context.stop();
     }
