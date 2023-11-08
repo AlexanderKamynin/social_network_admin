@@ -150,6 +150,32 @@ class AdminTools
         }
     }
 
+    create_account(account_info)
+    {
+        let max_id = 1;
+        for(let idx = 0; idx < this.all_users.length; idx++)
+        {
+            max_id = Math.max(this.all_users[idx].id, max_id);
+        }
+
+        let new_user = {
+            "id": max_id + 1,
+            "password": account_info.password,
+            "name": account_info.name,
+            "date": account_info.date,
+            "email": account_info.email,
+            "avatar": "default.png",
+            "role": "Пользователь",
+            "status": "Активный",
+            "friends": null
+        }
+        this.all_users.push(new_user);
+
+        return {
+            "user": new_user
+        }
+    }
+
     authenticate(email, password)
     {
         let auth_info = {}
@@ -236,6 +262,16 @@ class AdminTools
         const friend_idx = this.all_users.map((user) => {
             return parseInt(user.id);
         }).indexOf(parseInt(friend_id));
+
+        if(!this.all_users[user_idx].friends){
+            this.all_users[user_idx].friends = [parseInt(friend_id)];
+
+            return {
+                success: true,
+                reason: 'Все ок',
+                user: this.all_users[user_idx]
+            }
+        }
 
         if(this.all_users[user_idx].friends.indexOf(parseInt(friend_id)) != -1){
             return {

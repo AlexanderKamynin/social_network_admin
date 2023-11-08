@@ -50,6 +50,16 @@ router.post("/auth", (request, response) => {
     )
 });
 
+router.post("/create_account", (request, response) => {
+    created_account = admin_tools.create_account(request.body.account_info);
+
+    response.send(
+        JSON.stringify({
+            "user": created_account.user
+        })
+    )
+})
+
 router.post("/delete_avatar", (request, response) => {
     new_user_data = admin_tools.delete_avatar(request.body.user_id);
 

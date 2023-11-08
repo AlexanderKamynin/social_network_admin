@@ -136,6 +136,29 @@ var AdminTools = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "create_account",
+    value: function create_account(account_info) {
+      var max_id = 1;
+      for (var idx = 0; idx < this.all_users.length; idx++) {
+        max_id = Math.max(this.all_users[idx].id, max_id);
+      }
+      var new_user = {
+        "id": max_id + 1,
+        "password": account_info.password,
+        "name": account_info.name,
+        "date": account_info.date,
+        "email": account_info.email,
+        "avatar": "default.png",
+        "role": "Пользователь",
+        "status": "Активный",
+        "friends": null
+      };
+      this.all_users.push(new_user);
+      return {
+        "user": new_user
+      };
+    }
+  }, {
     key: "authenticate",
     value: function authenticate(email, password) {
       var auth_info = {};
@@ -208,6 +231,14 @@ var AdminTools = /*#__PURE__*/function () {
       var friend_idx = this.all_users.map(function (user) {
         return parseInt(user.id);
       }).indexOf(parseInt(friend_id));
+      if (!this.all_users[user_idx].friends) {
+        this.all_users[user_idx].friends = [parseInt(friend_id)];
+        return {
+          success: true,
+          reason: 'Все ок',
+          user: this.all_users[user_idx]
+        };
+      }
       if (this.all_users[user_idx].friends.indexOf(parseInt(friend_id)) != -1) {
         return {
           success: false,
