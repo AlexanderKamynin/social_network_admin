@@ -125,3 +125,5 @@ io.on("connection", socket => {
 
 SERVER.listen(PORT);
 console.log(`Server working using ${PORT} port on https://localhost:${PORT}/`);
+
+module.exports = SERVER;

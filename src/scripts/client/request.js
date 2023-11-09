@@ -67,3 +67,6 @@ async function change_user_info(user_info)
 
     location.reload();
 }
+
+
+module.exports = {send_request};
